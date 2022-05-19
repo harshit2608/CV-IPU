@@ -1,0 +1,12 @@
+{
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.enabled": true,
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    // "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
+    // 4. enable font ligature
+    "editor.fontLigatures": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+}

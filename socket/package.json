@@ -1,0 +1,24 @@
+{
+    "name": "socket-connection",
+    "version": "1.0.0",
+    "description": "Socket.io implementation for chat system of conservation village",
+    "scripts": {
+        "start:dev": "nodemon src/index.js"
+    },
+    "keywords": [
+        "socket.io",
+        "conservation",
+        "village",
+        "backend",
+        "chat"
+    ],
+    "author": "Harshit Bargujar",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.0.1",
+        "socket.io": "^4.5.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    }
+}
