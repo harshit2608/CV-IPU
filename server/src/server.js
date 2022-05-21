@@ -11,10 +11,11 @@ dotenv.config({ path: './src/.env' });
 const application = require('./application');
 
 const port = process.env.PORT || 3001;
-const DB = process.env.DATABASE.replace(
+let DB = process.env.DATABASE.replace(
     '<PASSWORD>',
     process.env.DATABASE_PASSWORD
 );
+DB = DB.replace('<DBNAME>', 'ConservationVillageDB');
 
 mongoose
     .connect(DB, {
@@ -33,3 +34,5 @@ process.on('unhandledRejection', (err) => {
         process.exit(1);
     });
 });
+
+module.exports = application;

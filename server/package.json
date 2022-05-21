@@ -5,7 +5,9 @@
     "scripts": {
         "start:dev": "nodemon src/server.js",
         "start:prod": "cross-env NODE_ENV=production nodemon src/server.js",
-        "deploy": "./node_modules/.bin/netlify-lambda build src"
+        "deploy": "./node_modules/.bin/netlify-lambda build src",
+        "test": "jest --watchAll",
+        "test:coverage": "jest --coverage --verbose"
     },
     "keywords": [
         "backend",
@@ -51,10 +53,13 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.29.4",
+        "jest": "^28.1.0",
+        "jest-json-schema": "^6.1.0",
         "nodemon": "^2.0.16",
-        "prettier": "^2.6.2"
+        "prettier": "^2.6.2",
+        "supertest": "^6.2.3"
     },
     "engines": {
-        "node": ">=12.0.0"
+        "node": "16.x.x"
     }
 }

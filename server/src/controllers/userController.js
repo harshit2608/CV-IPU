@@ -110,18 +110,17 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.getUser = catchAsync(async (req, res, next) => {
-    const query = User.findById(req.params.id);
-    // if (popOptions) query = query.populate(popOptions);
-    const doc = await query;
+    const query = await User.findById(req.params.id);
 
-    if (!doc) {
+    if (!query) {
+        console.log('DONEEEEEEE');
         return next(new AppError('No document found with that ID', 404));
     }
 
     res.status(200).json({
         status: 'success',
         data: {
-            data: doc,
+            data: query,
         },
     });
 });
