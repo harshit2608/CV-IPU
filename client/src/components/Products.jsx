@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { popularProducts } from "../data";
-import Product from "./Product";
+import styled from 'styled-components';
+import { popularProducts } from '../data';
+import Product from './Product';
 
 const Container = styled.div`
     padding: 20px;
@@ -18,18 +18,17 @@ const Title = styled.div`
     color: black;
     opacity: 0.5;
     margin: 80px 20px 20px 20px;
-`
+`;
 
 const Products = () => {
-  return (
-    
-    <Container>
-    <Title>Top Products</Title>
-      {popularProducts.map((item) => (
-        <Product item={item} key={item.id} />
-      ))}
-    </Container>
-  );
+    return (
+        <Container>
+            <Title>Top Products</Title>
+            {popularProducts.map((item) => (
+                <Product item={item} key={item.id} />
+            ))}
+        </Container>
+    );
 };
 
 export default Products;
