@@ -1,3 +1,4 @@
+import axios from 'axios';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -65,6 +66,16 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+
+    // const api = axios.create({
+    //     baseURL: `http://localhost:3000`
+    // })
+
+    // const createProducts = async () => {
+    //     let response = await api.post('/product/create', { name: "test", price: "69", quantity: "1", description: "wow" })
+    //     console.log(response)
+    // }
+
     return (
         <div>
             <Navbar />
@@ -83,7 +94,8 @@ const Register = () => {
                             <b>PRIVACY POLICY</b>
                         </Agreement>
                         <ButtonWrapper>
-                            <Button>CREATE</Button>
+                            <Button >CREATE</Button>
+                            {/* onClick={createProducts} */}
                         </ButtonWrapper>
                     </Form>
                 </Wrapper>
