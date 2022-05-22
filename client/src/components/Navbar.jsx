@@ -10,6 +10,7 @@ import {
 } from '@material-ui/icons';
 import React from 'react';
 import LoginIcon from '@mui/icons-material/Login';
+import GrassIcon from '@mui/icons-material/Grass';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import styled from 'styled-components';
 import { Badge } from '@material-ui/core';
@@ -110,9 +111,9 @@ const Navbar = () => {
                     <Link to={'/'}>
                         <Logo>
                             Conservation Village
-                            {/* <Badge color="white">
-                            <Star />
-                            </Badge> */}
+                            <Badge color="white">
+                                <GrassIcon />
+                            </Badge>
                         </Logo>
                     </Link>
                     {/* <Catagories>Catagories</Catagories>
@@ -148,7 +149,7 @@ const Navbar = () => {
                             </Badge>
                         </MenuItem>
                     </Link>
-                    <Link to={'/profile'}>
+                    <Link to={'/messenger'}>
                         <MenuItem>
                             Chats
                             <Badge color="black">

@@ -1,7 +1,9 @@
 import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { useState } from 'react';
 
 const Container = styled.div`
     width: 100vw;
@@ -67,14 +69,11 @@ const Button = styled.button`
 
 const Register = () => {
 
-    // const api = axios.create({
-    //     baseURL: `http://localhost:3000`
-    // })
-
-    // const createProducts = async () => {
-    //     let response = await api.post('/product/create', { name: "test", price: "69", quantity: "1", description: "wow" })
-    //     console.log(response)
-    // }
+    const [name, AddName] = useState('')
+    const [price, AddPrce] = useState('')
+    const [desc, AddDesc] = useState('')
+    const [quant, AddQuant] = useState('')
+    const [img, AddImage] = useState('')
 
     return (
         <div>
