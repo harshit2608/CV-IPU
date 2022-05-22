@@ -11,6 +11,8 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 100px;
+    background-color: #f5fbfd;
 `;
 
 const Title = styled.div`

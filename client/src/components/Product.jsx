@@ -26,7 +26,7 @@ const Info = styled.div`
 
 const Container = styled.div`
     flex: 1;
-    margin: 5px;
+    margin: 30px 30px 30px 30px;
     max-width: 280px;
     max-height: 350px;
     display: flex;
@@ -51,7 +51,7 @@ const Circle = styled.div`
 
 const Image = styled.img`
     height: 320px;
-    max-width: 250px;
+    width: 240px;
     z-index: 2;
 `;
 
@@ -76,6 +76,7 @@ const Icon = styled.div`
 const ProductInfo = styled.div`
     text-align: center;
     font-size: 16px;
+    align-items: center;
 `;
 
 const Product = ({ item }) => {

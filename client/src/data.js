@@ -8,14 +8,14 @@ export const sliderItems = [
     },
     {
         id: 2,
-        img: 'https://i.ibb.co/DG69bQ4/2.png',
+        img: 'https://www.dropbox.com/s/a3l5shljgdzxll4/e7283e63-d1c1-4f5f-9b42-26d677eacbfa.jpg?dl=1',
         title: 'SECURE SALE AND PURCHASE',
         desc: "DON'T COMPROMISE SECURITY.",
         bg: 'fcf1ed',
     },
     {
         id: 3,
-        img: 'https://i.ibb.co/cXFnLLV/3.png',
+        img: 'https://www.dropbox.com/s/606be73jnlkntfr/alex-shute-bGOemOApXo4-unsplash.jpg?dl=1',
         title: 'UNMATCHED TRUST',
         desc: 'TRUST OF IPU STUDENTS.',
         bg: 'fbf0f4',

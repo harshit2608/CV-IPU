@@ -6,6 +6,7 @@ import {
     ShoppingCartOutlined,
     Star,
     PersonAdd,
+    ChatBubbleOutline,
 } from '@material-ui/icons';
 import React from 'react';
 import LoginIcon from '@mui/icons-material/Login';
@@ -40,7 +41,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-    flex: 4;
+    flex: 5;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,6 +74,7 @@ const Input = styled.input`
 const Logo = styled.h1`
     font-weight: bold;
     color: black;
+    margin-left: 40px;
 `;
 const MenuItem = styled.div`
     font-weight: bolder;
@@ -143,6 +145,14 @@ const Navbar = () => {
                             Profile
                             <Badge color="black">
                                 <PermIdentityOutlined />
+                            </Badge>
+                        </MenuItem>
+                    </Link>
+                    <Link to={'/profile'}>
+                        <MenuItem>
+                            Chats
+                            <Badge color="black">
+                                <ChatBubbleOutline />
                             </Badge>
                         </MenuItem>
                     </Link>
