@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
+const path = require('path')
 process.on('uncaughtException', (err) => {
     console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
     console.log(err.name, err.message);
     process.exit(1);
 });
 
-dotenv.config({ path: './src/.env' });
+dotenv.config({ path: `./src/.env` });
 const application = require('./application');
 
 const port = process.env.PORT || 3001;
+
 let DB = process.env.DATABASE.replace(
     '<PASSWORD>',
     process.env.DATABASE_PASSWORD

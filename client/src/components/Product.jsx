@@ -25,8 +25,8 @@ const Info = styled.div`
 const Container = styled.div`
     flex: 1;
     margin: 5px;
-    min-width: 280px;
-    height: 350px;
+    max-width: 280px;
+    max-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,8 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-    height: 75%;
+    max-height: 320px;
+    max-width: 250px;
     z-index: 2;
 `;
 
@@ -70,23 +71,37 @@ const Icon = styled.div`
     }
 `;
 
+const ProductInfo = styled.div`
+    text-align: center;
+    font-size: 16px;
+    
+`
+
 const Product = ({ item }) => {
     return (
-        <Container>
-            <Circle />
-            <Image src={item.img} />
-            <Info>
-                <Icon>
-                    <ShoppingCartOutlined />
-                </Icon>
-                <Icon>
-                    <ChatBubbleOutline />
-                </Icon>
-                <Icon>
-                    <FavoriteBorderOutlined />
-                </Icon>
-            </Info>
-        </Container>
+        <div>
+            <Container>
+                {/* <Circle /> */}
+                <Image src={item.urlToImage} />
+                <Info>
+                    <Icon>
+                        <ShoppingCartOutlined />
+                    </Icon>
+                    <Icon>
+                        <ChatBubbleOutline />
+                    </Icon>
+                    <Icon>
+                        <FavoriteBorderOutlined />
+                    </Icon>
+                </Info>
+
+            </Container>
+            <ProductInfo>
+                <h3>{item.author} </h3>
+                <h3>Price: </h3>
+            </ProductInfo>
+
+        </div>
     );
 };
 

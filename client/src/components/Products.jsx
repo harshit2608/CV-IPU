@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { popularProducts } from '../data';
 import Product from './Product';
+import { useState } from 'react';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+
 
 const Container = styled.div`
     padding: 20px;
@@ -20,15 +24,29 @@ const Title = styled.div`
     margin: 80px 20px 20px 20px;
 `;
 
+
+
 const Products = () => {
+
+    const [AllProducts, setProducts] = useState([])
+
+    const fetchProducts = () => {
+        axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=f357ffc056fc4354bf4be0d650aa370c")
+            .then((response) => {
+                setProducts(response.data.articles)
+            })
+    }
+
     return (
-        <Container>
+
+        <Container onClick={fetchProducts}>
             <Title>Top Products</Title>
-            {popularProducts.map((item) => (
-                <Product item={item} key={item.id} />
+            {AllProducts.map((item) => (
+                <Product item={item} />
             ))}
         </Container>
     );
 };
 
 export default Products;
+
