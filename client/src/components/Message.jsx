@@ -1,5 +1,5 @@
 import '../styles/Message.css';
-import { format } from 'moment';
+import moment from 'moment';
 
 const Message = ({ message, own }) => {
     return (
@@ -12,7 +12,9 @@ const Message = ({ message, own }) => {
                 />
                 <p className="messageText">{message.text}</p>
             </div>
-            <div className="messageBottom">{format(message.createdAt)}</div>
+            <div className="messageBottom">
+                {moment().format('MMM Do YY', message.createdAt)}
+            </div>
         </div>
     );
 };

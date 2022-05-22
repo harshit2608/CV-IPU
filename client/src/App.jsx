@@ -25,7 +25,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route
                     path="/login"
-                    element={user ? <Navigate to="/" /> : <Login />}
+                    element={user ? <Navigate replace to="/" /> : <Login />}
                 />
                 <Route
                     path="/register"
