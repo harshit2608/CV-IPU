@@ -5,6 +5,8 @@ import {
 } from '@material-ui/icons';
 import styled from 'styled-components';
 
+import { PF } from '../config';
+
 const Info = styled.div`
     opacity: 0;
     width: 100%;
@@ -48,7 +50,7 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-    max-height: 320px;
+    height: 320px;
     max-width: 250px;
     z-index: 2;
 `;
@@ -74,15 +76,23 @@ const Icon = styled.div`
 const ProductInfo = styled.div`
     text-align: center;
     font-size: 16px;
-    
-`
+`;
 
 const Product = ({ item }) => {
+    // console.log(item.productPictures[0].url);
     return (
         <div>
             <Container>
                 {/* <Circle /> */}
-                <Image src={item.urlToImage} />
+                <Image
+                    src={
+                        // item?.productPictures
+                        //     ? PF + item.productPictures
+                        //     : PF + 'person/noCover.png'
+                        item.urlImg
+                    }
+                />
+
                 <Info>
                     <Icon>
                         <ShoppingCartOutlined />
@@ -94,13 +104,12 @@ const Product = ({ item }) => {
                         <FavoriteBorderOutlined />
                     </Icon>
                 </Info>
-
             </Container>
             <ProductInfo>
-                <h3>{item.author} </h3>
+                <h3>{item.name} </h3>
+                <h3>{item.description} </h3>
                 <h3>Price: </h3>
             </ProductInfo>
-
         </div>
     );
 };

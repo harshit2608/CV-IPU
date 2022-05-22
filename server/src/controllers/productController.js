@@ -14,7 +14,7 @@ exports.createProduct = catchAsync(async (req, res, next) => {
         return next(new AppError('Please verify your Email ID.', 400));
     }
 
-    const { name, price, description, category, quantity, createdBy } =
+    const { name, price, description, category, quantity, urlImg, createdBy } =
         req.body;
     let productPictures = [];
 
@@ -32,6 +32,7 @@ exports.createProduct = catchAsync(async (req, res, next) => {
         description,
         productPictures,
         category,
+        urlImg,
         createdBy: req.user._id,
     });
 

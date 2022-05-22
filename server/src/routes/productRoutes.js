@@ -39,8 +39,8 @@ router.delete(
 
 router.post(
     '/getProducts',
-    protect,
-    restrictTo('admin'),
+    // protect,
+    // restrictTo('admin'),
     productController.getProducts
 );
 

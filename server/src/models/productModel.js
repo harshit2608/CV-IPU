@@ -28,6 +28,7 @@ const productSchema = new mongoose.Schema(
         },
         offer: { type: Number },
         productPictures: [{ img: { type: String } }],
+        urlImg: String,
         reviews: [
             {
                 userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -37,7 +38,7 @@ const productSchema = new mongoose.Schema(
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category',
-            required: true,
+            // required: true,
         },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
