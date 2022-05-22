@@ -36,6 +36,7 @@ const limiter = rateLimit({
     message: 'Too many requests from this IP, please try again in an hour',
 });
 application.use('/api', limiter);
+console.log(`Update CORS to for safety reason`);
 application.use(cors());
 application.use(express.json());
 application.use('/public', express.static(path.join(__dirname, '../uploads')));
