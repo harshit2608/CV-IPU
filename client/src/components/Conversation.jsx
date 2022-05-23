@@ -25,6 +25,7 @@ const Conversation = ({ conversation, currentUser }) => {
         getUser();
     }, [currentUser, conversation]);
 
+    // console.log(user?.data?.users?.[0]?.name);
     return (
         <div className="conversation">
             <img
@@ -36,7 +37,9 @@ const Conversation = ({ conversation, currentUser }) => {
                 }
                 alt=""
             />
-            <span className="conversationName">{user?.name}</span>
+            <span className="conversationName">
+                {user?.data?.users?.[1]?.name}
+            </span>
         </div>
     );
 };

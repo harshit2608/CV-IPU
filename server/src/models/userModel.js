@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
             },
             formattedAddress: String,
         },
-        photo: String,
+        profilePhoto: String,
         role: {
             type: String,
             enum: ['user', 'admin'],

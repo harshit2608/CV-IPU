@@ -19,7 +19,7 @@ import { AuthContext } from './context/AuthContext';
 const App = () => {
     // const user = useSelector((state) => state.user.currentUser);
     const { user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     return (
         <Router>
             <Routes>
