@@ -5,7 +5,7 @@ const { protect } = require('../../middlewares/middlewares');
 
 const router = express.Router();
 
-router.post('/', protect, conversationController.startConversation);
-router.get('/:userId', protect, conversationController.getConversation);
+router.post('/', conversationController.startConversation);
+router.get('/:userId', conversationController.getConversation);
 
 module.exports = router;
