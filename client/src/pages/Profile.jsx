@@ -4,6 +4,8 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 
+import { Badge } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { ENDPOINT, PF } from '../config';
 import { useState, useEffect } from 'react';
 import {
@@ -13,7 +15,6 @@ import {
     Navigate,
 } from 'react-router-dom';
 import UpdateMe from './UpdateMe';
-import { Button } from '@material-ui/core';
 import UpdateMyPassword from './UpdatePassword';
 
 const Container = styled.div`
@@ -22,6 +23,18 @@ const Container = styled.div`
     /* display: flex; */
     align-items: center;
     justify-content: center;
+`;
+
+const Button = styled.button`
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    padding: 5px 10px;
+    border: none;
+    /* border: 2px solid palevioletred; */
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #2dc653;
 `;
 
 const Image = styled.img`
@@ -133,8 +146,25 @@ const Profile = () => {
                 {/* <Button onClick={<Navigate replace to="/updateme" />}>
                     Update Data
                 </Button> */}
-                <UpdateMe></UpdateMe>
-                <UpdateMyPassword></UpdateMyPassword>
+                <Title>
+                    <Link to={'/updateMe'}>
+                        <Button>
+                            Update Profile
+                            <Badge color="secondary">
+                            </Badge>
+                        </Button>
+                    </Link>
+                    <Link to={'/updateMyPassword'}>
+                        <Button>
+                            Update Password
+                            <Badge color="secondary">
+                            </Badge>
+                        </Button>
+                    </Link>
+                </Title>
+
+                {/* <UpdateMe></UpdateMe>
+                <UpdateMyPassword></UpdateMyPassword> */}
             </Container>
             <Footer />
         </div>

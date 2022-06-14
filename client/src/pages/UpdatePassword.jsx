@@ -66,6 +66,7 @@ const Button = styled.button`
     background-color: teal;
     color: white;
     cursor: pointer;
+    margin-top: 30px;
 `;
 
 const UpdateMyPassword = () => {

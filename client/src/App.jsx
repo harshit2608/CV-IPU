@@ -5,7 +5,7 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom';
-
+import UpdateMyPassword from './pages/UpdatePassword';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Product from './pages/Product';
@@ -15,6 +15,7 @@ import Messenger from './pages/Messenger';
 
 import Profile from './pages/Profile';
 import { AuthContext } from './context/AuthContext';
+import UpdateMe from './pages/UpdateMe';
 
 const App = () => {
     // const user = useSelector((state) => state.user.currentUser);
@@ -33,6 +34,8 @@ const App = () => {
                     element={user ? <Navigate to="/" /> : <Register />}
                 />
                 <Route path="product" element={<Product />} />
+                <Route path="updateMyPassword" element={<UpdateMyPassword />} />
+                <Route path="updateMe" element={<UpdateMe />} />
                 <Route
                     path="/profile"
                     element={!user ? <Navigate replace to="/" /> : <Profile />}
