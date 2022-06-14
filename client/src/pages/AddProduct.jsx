@@ -70,10 +70,43 @@ const Button = styled.button`
 const Register = () => {
 
     const [name, AddName] = useState('')
-    const [price, AddPrce] = useState('')
+    const [price, AddPrice] = useState('')
     const [desc, AddDesc] = useState('')
+    const [imgURL, AddImageURL] = useState('')
     const [quant, AddQuant] = useState('')
-    const [img, AddImage] = useState('')
+    //const [img, AddImage] = useState('')
+
+    const handleName = (e) => {
+        AddName(e.target.value)
+    }
+    const handlePrice = (e) => {
+        AddPrice(e.target.value)
+    }
+    const handleDesc = (e) => {
+        AddDesc(e.target.value)
+    }
+    const handleImgURL = (e) => {
+        AddImageURL(e.target.value)
+    }
+    const handleQuant = (e) => {
+        AddQuant(e.target.value)
+    }
+    // const handleImg = (e) => {
+    //     //     AddImage(e.target.value)
+    // }
+
+    const handleAPI = (e) => {
+        axios.post('http://localhost:3000/api/v1/product/create', {
+            name: name,
+            desc: desc,
+            price: price,
+            imgURL: imgURL,
+            quant: quant
+        })
+            .then(response => {
+                console.log(response)
+            })
+    }
 
     return (
         <div>
@@ -82,19 +115,19 @@ const Register = () => {
                 <Wrapper>
                     <Title>Add Product</Title>
                     <Form>
-                        <Input type="text" placeholder="product name" />
-                        <Input type="text" placeholder="price in INR" />
-                        <Input type="text" placeholder="description" />
-                        <Input type="number" placeholder="quantity" />
-                        <Input type="file" placeholder="Add image" />
+                        <Input type="text" value={name} onChange={handleName} placeholder="product name" />
+                        <Input type="text" value={price} onChange={handlePrice} placeholder="price in INR" />
+                        <Input type="text" value={desc} onChange={handleDesc} placeholder="description" />
+                        <Input type="text" value={imgURL} onChange={handleImgURL} placeholder="Image URL" />
+                        <Input type="number" value={quant} onChange={handleQuant} placeholder="quantity" />
+                        {/* <Input type="file" value={img} onChange={handleImg} placeholder="Add image" /> */}
                         <Agreement>
                             By creating an account, I consent to the processing
                             of my personal data in accordance with the{' '}
                             <b>PRIVACY POLICY</b>
                         </Agreement>
                         <ButtonWrapper>
-                            <Button >CREATE</Button>
-                            {/* onClick={createProducts} */}
+                            <Button onClick={handleAPI}>CREATE</Button>
                         </ButtonWrapper>
                     </Form>
                 </Wrapper>

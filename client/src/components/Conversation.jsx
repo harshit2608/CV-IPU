@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import '../styles/Conversation.css';
 import { ENDPOINT, PF } from '../config';
+import Navbar from '../components/Navbar';
 
 const Conversation = ({ conversation, currentUser }) => {
     const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ const Conversation = ({ conversation, currentUser }) => {
 
     // console.log(user?.data?.users?.[0]?.name);
     return (
+        // <Navbar/>
         <div className="conversation">
             <img
                 className="conversationImg"

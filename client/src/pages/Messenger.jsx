@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '../config';
+import Navbar from '../components/Navbar';
 
 export default function Messenger() {
     const [conversations, setConversations] = useState([]);
@@ -116,6 +117,7 @@ export default function Messenger() {
     return (
         <>
             {/* <Topbar /> */}
+            <Navbar />
             <div className="messenger">
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">

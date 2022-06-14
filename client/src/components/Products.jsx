@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { popularProducts } from '../data';
 import Product from './Product';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { ENDPOINT } from '../config';
@@ -12,7 +12,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 100px;
-    background-color: #f5fbfd;
 `;
 
 const Title = styled.div`
@@ -28,6 +27,10 @@ const Title = styled.div`
 
 const Products = () => {
     const [AllProducts, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetchProducts()
+    })
 
     const fetchProducts = async () => {
         try {
@@ -46,7 +49,8 @@ const Products = () => {
     };
 
     return (
-        <Container onClick={fetchProducts}>
+        // <Container onClick={fetchProducts}>
+        <Container>
             <Title>Top Products</Title>
             {AllProducts.map((item) => (
                 <Product item={item} />
