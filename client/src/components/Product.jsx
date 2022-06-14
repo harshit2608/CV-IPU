@@ -95,9 +95,9 @@ const Product = ({ item }) => {
                 />
 
                 <Info>
-                    <Icon>
+                    {/* <Icon>
                         <ShoppingCartOutlined />
-                    </Icon>
+                    </Icon> */}
                     <Icon>
                         <ChatBubbleOutline />
                     </Icon>
@@ -109,7 +109,6 @@ const Product = ({ item }) => {
             <ProductInfo>
                 <h3>{item.name} </h3>
                 <h3>{item.description} </h3>
-                <h3>Price: </h3>
             </ProductInfo>
         </div>
     );

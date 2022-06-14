@@ -6,6 +6,14 @@ import axios from 'axios';
 
 import { ENDPOINT, PF } from '../config';
 import { useState, useEffect } from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+} from 'react-router-dom';
+import UpdateMe from './UpdateMe';
+import { Button } from '@material-ui/core';
 
 const Container = styled.div`
     width: 100%;
@@ -90,6 +98,7 @@ const Profile = () => {
             console.log(error);
         }
     };
+    console.log(userProfile);
     return (
         <div>
             <Navbar />
@@ -97,8 +106,8 @@ const Profile = () => {
                 <ImgContainer>
                     <Image
                         src={
-                            userProfile?.profilePicture
-                                ? PF + userProfile?.profilePicture
+                            userProfile?.profilePhoto
+                                ? userProfile?.profilePhoto
                                 : PF + 'person/noAvatar.png'
                         }
                     />
@@ -112,13 +121,18 @@ const Profile = () => {
                 <Title>
                     Phone Number :<Phone>{userProfile?.phoneNumber}</Phone>
                 </Title>
-                <Title>
+                {/* <Title>
                     Email Verified :
                     <Address>{userProfile?.verifiedEmail}</Address>
                 </Title>
+                    */}
                 <Title>
                     Address :<Address>{userProfile?.address}</Address>
                 </Title>
+                {/* <Button onClick={<Navigate replace to="/updateme" />}>
+                    Update Data
+                </Button> */}
+                <UpdateMe></UpdateMe>
             </Container>
             <Footer />
         </div>

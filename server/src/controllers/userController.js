@@ -70,12 +70,20 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     }
 
     const user = await User.findById(req.user.id);
+    console.log(`THis is user ${user}`);
     if (user.verifiedEmail === false) {
         return next(new AppError('Please verify your Email ID.', 400));
     }
 
+    console.log(req.body);
     // 2) Filtered out unwanted fields names that are not allowed to be updated
-    const filteredBody = filterObj(req.body, 'name');
+    const filteredBody = filterObj(
+        req.body,
+        'name',
+        'phoneNumber',
+        'address',
+        'profilePhoto'
+    );
 
     // 3) Update user document
     const updatedUser = await User.findByIdAndUpdate(
@@ -86,7 +94,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
             runValidators: true,
         }
     );
-
+    console.log(updatedUser);
     res.status(200).json({
         status: 'success',
         data: {

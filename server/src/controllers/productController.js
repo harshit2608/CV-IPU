@@ -15,6 +15,7 @@ exports.createProduct = catchAsync(async (req, res, next) => {
     }
     if (user.verifiedEmail === true) {
         console.log(`Email is verified`);
+        console.log(req.user.id);
     }
 
     const { name, price, description, category, quantity, urlImg, createdBy } =
@@ -25,8 +26,6 @@ exports.createProduct = catchAsync(async (req, res, next) => {
         productPictures = req.files.map((file) => ({ img: file.location }));
     }
 
-    console.log(req);
-
     const product = new Product({
         name: name,
         slug: slugify(name),
@@ -36,10 +35,11 @@ exports.createProduct = catchAsync(async (req, res, next) => {
         productPictures,
         category,
         urlImg,
-        createdBy: req.user._id,
+        createdBy: req.user.id,
     });
 
     await product.save();
+    console.log(`Product created`);
 
     return res.status(201).json({
         product,

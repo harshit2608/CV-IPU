@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100vw;
@@ -74,6 +75,7 @@ const AddProduct = () => {
     const [imgURL, AddImageURL] = useState('');
     const [quant, AddQuant] = useState('');
     //const [img, AddImage] = useState('')
+    const navigate = useNavigate();
 
     const handleName = (e) => {
         AddName(e.target.value);
@@ -99,28 +101,29 @@ const AddProduct = () => {
 
     const options = {
         headers: {
-            // 'Content-Type': 'multipart/form-data',
+            'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${obj.token}`,
         },
     };
 
     const handleAPI = (e) => {
+        e.preventDefault();
         axios
             .post(
                 'http://localhost:3000/api/v1/product/create',
                 {
                     name: name,
-                    desc: desc,
+                    description: desc,
                     price: price,
-                    imgURL: imgURL,
-                    quant: quant,
-                    user,
+                    urlImg: imgURL,
+                    quantity: quant,
                 },
                 options
             )
             .then((response) => {
                 console.log(response);
             });
+        window.alert('Product created successfully');
     };
 
     return (
