@@ -23,6 +23,7 @@ export const signUpCall = async (userCredential, dispatch) => {
             userCredential
         );
         dispatch({ type: 'SIGNUP_SUCCESS', payload: res.data });
+        window.alert('Account created Successfully');
     } catch (err) {
         dispatch({ type: 'SIGNUP_FAILURE', payload: err });
     }
