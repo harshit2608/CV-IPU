@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { popularProducts } from '../data';
 import Product from './Product';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import { ENDPOINT } from '../config';
+import Button from 'react-bootstrap/Button';
+import { popularProducts } from '../data';
 
 const Container = styled.div`
     padding: 20px;
@@ -29,8 +29,8 @@ const Products = () => {
     const [AllProducts, setProducts] = useState([]);
 
     useEffect(() => {
-        fetchProducts()
-    })
+        fetchProducts();
+    }, []);
 
     const fetchProducts = async () => {
         try {

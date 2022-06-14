@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import React from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+
+import { ENDPOINT, PF } from '../config';
+import { useState, useEffect } from 'react';
 
 const Container = styled.div`
     width: 100%;
@@ -60,25 +64,60 @@ const Address = styled.h3`
 `;
 
 const Profile = () => {
+    const [userProfile, setuserProfile] = useState(null);
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
+    const obj = JSON.parse(localStorage.getItem('user'));
+
+    const options = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${obj.token}`,
+        },
+    };
+    const fetchUser = async () => {
+        try {
+            await axios
+                .get(`${ENDPOINT}/api/v1/users/me`, options)
+                .then((response) => {
+                    // console.log(response.data.data.data);
+                    setuserProfile(response.data.data.data);
+                });
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <div>
             <Navbar />
             <Container>
                 <ImgContainer>
-                    <Image src="https://www.dropbox.com/s/rzvlck52yu2e3ao/20220502_144913.jpg?dl=1" />
+                    <Image
+                        src={
+                            userProfile?.profilePicture
+                                ? PF + userProfile?.profilePicture
+                                : PF + 'person/noAvatar.png'
+                        }
+                    />
                 </ImgContainer>
                 <Title>
-                    Name :<ProfileName>Sachin Bhola</ProfileName>
+                    Name :<ProfileName>{userProfile?.name}</ProfileName>
                 </Title>
                 <Title>
-                    Email :<Email>sachin.27.ipu.ac.in</Email>
+                    Email :<Email>{userProfile?.email}</Email>
                 </Title>
                 <Title>
-                    Phone Number :<Phone>+91 9849492729</Phone>
+                    Phone Number :<Phone>{userProfile?.phoneNumber}</Phone>
                 </Title>
                 <Title>
-                    Address :
-                    <Address>Random Street, St.Petersburg, Alaska</Address>
+                    Email Verified :
+                    <Address>{userProfile?.verifiedEmail}</Address>
+                </Title>
+                <Title>
+                    Address :<Address>{userProfile?.address}</Address>
                 </Title>
             </Container>
             <Footer />

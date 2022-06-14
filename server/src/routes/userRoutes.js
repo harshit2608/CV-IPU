@@ -13,12 +13,12 @@ const router = express.Router();
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
-router.get('/me', userController.getMe, userController.getUser);
+router.get('/me', protect, userController.getUser);
 router.post('/address', protect, validateAddress, userController.addAddress);
 router.post('/signout', authController.signout);
 router.post('/forgotPassword', authController.forgotPassword);
 router.post('/verifyEmail', authController.verifyEmail);
-router.post('/verifyPhone', authController.verifyPhone);
+// router.post('/verifyPhone', authController.verifyPhone);
 router.patch('/resetPassword/:token', authController.resetPassword);
 router.patch(
     '/updateMyPassword',
