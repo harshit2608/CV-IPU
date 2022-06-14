@@ -8,16 +8,20 @@ import {
     PersonAdd,
     ChatBubbleOutline,
 } from '@material-ui/icons';
-import React from 'react';
+import React, { Fragment } from 'react';
 import LoginIcon from '@mui/icons-material/Login';
 import GrassIcon from '@mui/icons-material/Grass';
+import LogOutIcon from '@mui/icons-material/Logout';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import styled from 'styled-components';
 import { Badge } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Profile from '../pages/Profile';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     height: 60px;
@@ -104,6 +108,38 @@ const Button = styled.button`
 `;
 
 const Navbar = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const fun = () => {
+        const obj = JSON.parse(localStorage.getItem('user')) || null;
+        if (obj !== null) {
+            console.log('not null');
+            setIsLoggedIn(true);
+        } else {
+            console.log('null');
+            setIsLoggedIn(false);
+        }
+    };
+
+    useEffect(() => {
+        fun();
+    });
+
+    const navigate = useNavigate();
+    const gotoHome = () => {
+        navigate('/');
+    };
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        localStorage.setItem('user', null);
+        window.alert('Log Out SuccessFull');
+        // navigate('/', { replace: true });
+        // <Navigate replace to="/"></Navigate>;
+        gotoHome();
+    };
+
     return (
         <Container>
             <Wrapper>
@@ -125,48 +161,84 @@ const Navbar = () => {
                 </Left>
                 <Center></Center>
                 <Right>
-                    <Link to={'/register'}>
+                    <Link to={'/'}>
                         <MenuItem>
-                            Register
-                            <Badge color="black">
-                                <PersonAddAltIcon />
-                            </Badge>
+                            Home
+                            <Badge color="black"></Badge>
                         </MenuItem>
                     </Link>
-                    <Link to={'/login'}>
-                        <MenuItem>
-                            Sign in
-                            <Badge color="black">
-                                <LoginIcon />
-                            </Badge>
-                        </MenuItem>
-                    </Link>
-                    <Link to={'/profile'}>
-                        <MenuItem>
-                            Profile
-                            <Badge color="black">
-                                <PermIdentityOutlined />
-                            </Badge>
-                        </MenuItem>
-                    </Link>
-                    <Link to={'/messenger'}>
-                        <MenuItem>
-                            Chats
-                            <Badge color="black">
-                                <ChatBubbleOutline />
-                            </Badge>
-                        </MenuItem>
-                    </Link>
-                    <MenuItem>
-                        <Link to={'/addProduct'}>
-                            <Button>
-                                Add Product
-                                <Badge color="secondary">
-                                    <AddSharp />
+                    {isLoggedIn ? (
+                        <Link to={'/profile'}>
+                            <MenuItem>
+                                Profile
+                                <Badge color="black">
+                                    <PermIdentityOutlined />
                                 </Badge>
-                            </Button>
+                            </MenuItem>
                         </Link>
-                    </MenuItem>
+                    ) : (
+                        <></>
+                    )}
+                    {isLoggedIn ? (
+                        <Link to={'/messenger'}>
+                            <MenuItem>
+                                Chats
+                                <Badge color="black">
+                                    <ChatBubbleOutline />
+                                </Badge>
+                            </MenuItem>
+                        </Link>
+                    ) : (
+                        <></>
+                    )}
+
+                    {isLoggedIn ? (
+                        <MenuItem>
+                            <Link to={'/addProduct'}>
+                                <Button>
+                                    Add Product
+                                    <Badge color="secondary">
+                                        <AddSharp />
+                                    </Badge>
+                                </Button>
+                            </Link>
+                        </MenuItem>
+                    ) : (
+                        <></>
+                    )}
+
+                    {!isLoggedIn ? (
+                        <Link to={'/register'}>
+                            <MenuItem>
+                                Register
+                                <Badge color="black">
+                                    <PersonAddAltIcon />
+                                </Badge>
+                            </MenuItem>
+                        </Link>
+                    ) : (
+                        <></>
+                    )}
+
+                    {isLoggedIn ? (
+                        <Link to={'/logout'}>
+                            <MenuItem onClick={handleLogout}>
+                                LogOut
+                                <Badge color="black">
+                                    <LogOutIcon />
+                                </Badge>
+                            </MenuItem>
+                        </Link>
+                    ) : (
+                        <Link to={'/login'}>
+                            <MenuItem>
+                                LogIn
+                                <Badge color="black">
+                                    <LoginIcon />
+                                </Badge>
+                            </MenuItem>
+                        </Link>
+                    )}
                 </Right>
             </Wrapper>
         </Container>
