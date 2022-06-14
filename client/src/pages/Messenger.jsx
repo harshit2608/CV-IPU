@@ -22,7 +22,7 @@ export default function Messenger() {
     const scrollRef = useRef();
 
     const id = user.data.user._id;
-    // console.log(id);
+    // console.log(user);
     useEffect(() => {
         socket.current = io('http://localhost:3001');
         socket.current.on('getMessage', (data) => {
@@ -56,7 +56,6 @@ export default function Messenger() {
                     `${ENDPOINT}/api/v1/conversations/` + id
                 );
                 setConversations(res.data.data.conversationIds);
-                // console.log(res.data);
             } catch (err) {
                 console.log(err);
             }

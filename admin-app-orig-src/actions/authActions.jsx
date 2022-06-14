@@ -3,7 +3,7 @@ import { authConstants } from './constants';
 
 export const login = (user) => {
     return async (dispatch) => {
-        console.log(user);
+        // console.log(user);
         const res = await axios.post('/admin/login', {
             ...user,
         });

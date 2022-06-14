@@ -21,7 +21,7 @@ const conversationRouter = require('./routes/chatsystem/conversationRoutes');
 const application = express();
 
 // 1) MIDDLEWARES
-application.use(helmet());
+// application.use(helmet());
 if (process.env.NODE_ENV === 'development') {
     application.use(morgan('dev'));
 } else {
@@ -35,7 +35,9 @@ const limiter = rateLimit({
     windowMs: 60 * 60 * 1000,
     message: 'Too many requests from this IP, please try again in an hour',
 });
-application.use('/api', limiter);
+
+// application.use('/api', limiter);
+
 console.log(`Update CORS to for safety reason`);
 application.use(cors());
 application.use(express.json());

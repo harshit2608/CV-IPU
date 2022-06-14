@@ -8,17 +8,18 @@ const Conversation = ({ conversation, currentUser }) => {
     const [user, setUser] = useState(null);
     // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+    // console.log(currentUser.data.user._id);
     useEffect(() => {
         const friendId = conversation.members.find(
-            (m) => m !== currentUser._id
+            (m) => m !== currentUser.data.user._id
         );
+        // console.log(friendId);
 
         const getUser = async () => {
             try {
-                const res = await axios(
-                    `${ENDPOINT}/api/v1/users?id=` + friendId
-                );
+                const res = await axios(`${ENDPOINT}/api/v1/users/` + friendId);
                 setUser(res.data);
+                // console.log(res);
             } catch (err) {
                 console.log(err);
             }
@@ -26,22 +27,20 @@ const Conversation = ({ conversation, currentUser }) => {
         getUser();
     }, [currentUser, conversation]);
 
-    // console.log(user?.data?.users?.[0]?.name);
+    // console.log(user?.data?.data?.name);
     return (
         // <Navbar/>
         <div className="conversation">
             <img
                 className="conversationImg"
                 src={
-                    user?.profilePicture
-                        ? PF + user.profilePicture
+                    user?.data?.data?.profilePicture
+                        ? PF + user?.data?.data?.profilePicture
                         : PF + 'person/noAvatar.png'
                 }
                 alt=""
             />
-            <span className="conversationName">
-                {user?.data?.users?.[1]?.name}
-            </span>
+            <span className="conversationName">{user?.data?.data?.name}</span>
         </div>
     );
 };

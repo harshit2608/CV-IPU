@@ -13,16 +13,19 @@ exports.createProduct = catchAsync(async (req, res, next) => {
     if (user.verifiedEmail === false) {
         return next(new AppError('Please verify your Email ID.', 400));
     }
+    if (user.verifiedEmail === true) {
+        console.log(`Email is verified`);
+    }
 
     const { name, price, description, category, quantity, urlImg, createdBy } =
         req.body;
     let productPictures = [];
 
     if (req.files.length > 0) {
-        productPictures = req.files.map((file) => {
-            return { img: file.location };
-        });
+        productPictures = req.files.map((file) => ({ img: file.location }));
     }
+
+    console.log(req);
 
     const product = new Product({
         name: name,

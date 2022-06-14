@@ -9,6 +9,7 @@ export const loginCall = async (userCredential, dispatch) => {
             userCredential
         );
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+        window.alert('Login Successfully');
     } catch (err) {
         dispatch({ type: 'LOGIN_FAILURE', payload: err });
     }

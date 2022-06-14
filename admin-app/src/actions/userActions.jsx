@@ -2,7 +2,7 @@ import { authConstants, userContants } from './constants';
 import axios from '../utils/axios';
 
 export const signup = (user) => {
-    console.log(user);
+    // console.log(user);
 
     return async (dispatch) => {
         dispatch({ type: userContants.USER_REGISTER_REQUEST });
