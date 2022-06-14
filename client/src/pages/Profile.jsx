@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom';
 import UpdateMe from './UpdateMe';
 import { Button } from '@material-ui/core';
+import UpdateMyPassword from './UpdatePassword';
 
 const Container = styled.div`
     width: 100%;
@@ -133,6 +134,7 @@ const Profile = () => {
                     Update Data
                 </Button> */}
                 <UpdateMe></UpdateMe>
+                <UpdateMyPassword></UpdateMyPassword>
             </Container>
             <Footer />
         </div>
