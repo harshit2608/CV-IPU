@@ -13,13 +13,13 @@ const Conversation = ({ conversation, currentUser }) => {
         const friendId = conversation.members.find(
             (m) => m !== currentUser.data.user._id
         );
-        // console.log(friendId);
+        console.log(friendId);
 
         const getUser = async () => {
             try {
                 const res = await axios(`${ENDPOINT}/api/v1/users/` + friendId);
                 setUser(res.data);
-                // console.log(res);
+                console.log(res);
             } catch (err) {
                 console.log(err);
             }
@@ -34,8 +34,8 @@ const Conversation = ({ conversation, currentUser }) => {
             <img
                 className="conversationImg"
                 src={
-                    user?.data?.data?.profilePicture
-                        ? PF + user?.data?.data?.profilePicture
+                    user?.data?.data?.profilePhoto
+                        ? user?.data?.data?.profilePhoto
                         : PF + 'person/noAvatar.png'
                 }
                 alt=""

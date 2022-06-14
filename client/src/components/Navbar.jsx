@@ -113,10 +113,10 @@ const Navbar = () => {
     const fun = () => {
         const obj = JSON.parse(localStorage.getItem('user')) || null;
         if (obj !== null) {
-            console.log('not null');
+            // console.log('not null');
             setIsLoggedIn(true);
         } else {
-            console.log('null');
+            // console.log('null');
             setIsLoggedIn(false);
         }
     };

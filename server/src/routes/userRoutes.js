@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
-router.get('/me', protect, userController.getUser);
+router.get('/me', protect, userController.getMe, userController.getUser);
 router.post('/address', protect, validateAddress, userController.addAddress);
 router.post('/signout', authController.signout);
 router.post('/forgotPassword', authController.forgotPassword);

@@ -112,20 +112,13 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     });
 });
 
-// exports.getMe = catchAsync(async (req, res, next) => {
-//     // req.params.id = req.user.id;
-//     const user = await User.findById(req.user.id);
-//     res.status(200).json({
-//         status: 'success',
-//         data: {
-//             user,
-//         },
-//     });
-//     // next();
-// });
+exports.getMe = (req, res, next) => {
+    req.params.id = req.user.id;
+    next();
+};
 
 exports.getUser = catchAsync(async (req, res, next) => {
-    const query = await User.findById(req.user.id);
+    const query = await User.findById(req.params.id);
 
     if (!query) {
         console.log('DONEEEEEEE');
